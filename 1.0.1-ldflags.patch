@@ -1,0 +1,44 @@
+--- origsrc/input-pad-1.0.1/input-pad/Makefile.am	2011-05-18 22:27:32.000000000 -0500
++++ src/input-pad-1.0.1/input-pad/Makefile.am	2011-10-03 14:01:58.089157900 -0500
+@@ -134,6 +134,7 @@ libinput_pad_xtest_gdk_la_LIBADD = \
+ libinput_pad_xtest_gdk_la_LDFLAGS = \
+ 	-export-dynamic                                         \
+ 	-avoid-version                                          \
++	-module							\
+ 	$(no_undefined)                                         \
+ 	$(NULL)
+ 
+@@ -174,6 +175,7 @@ libinput_pad_eek_gtk_la_LIBADD = \
+ libinput_pad_eek_gtk_la_LDFLAGS = \
+ 	-export-dynamic                                         \
+ 	-avoid-version                                          \
++	-module							\
+ 	$(no_undefined)                                         \
+ 	$(NULL)
+ endif
+--- origsrc/input-pad-1.0.1/pyinput-pad/Makefile.am	2011-05-18 22:27:32.000000000 -0500
++++ src/input-pad-1.0.1/pyinput-pad/Makefile.am	2011-10-03 13:58:54.872040500 -0500
+@@ -61,6 +61,7 @@ _input_pad_la_LDFLAGS = \
+ 	$(PYTHON_LIBS)                                          \
+ 	-avoid-version                                          \
+ 	-module                                                 \
++	$(no_undefined)						\
+ 	$(NULL)
+ 
+ _input_pad_la_LIBADD = \
+@@ -90,6 +91,7 @@ _input_pad_group_la_LDFLAGS = \
+ 	$(PYTHON_LIBS)                                          \
+ 	-avoid-version                                          \
+ 	-module                                                 \
++	$(no_undefined)						\
+ 	$(NULL)
+ 
+ _input_pad_group_la_LIBADD = \
+@@ -111,6 +113,7 @@ _input_pad_window_gtk_la_LDFLAGS = \
+ 	$(PYTHON_LIBS)                                          \
+ 	-avoid-version                                          \
+ 	-module                                                 \
++	$(no_undefined)						\
+ 	$(NULL)
+ 
+ _input_pad_window_gtk_la_LIBADD = \

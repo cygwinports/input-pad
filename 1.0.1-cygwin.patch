@@ -1,0 +1,14 @@
+--- origsrc/input-pad-1.0.1/input-pad/window-gtk.c	2011-05-18 22:27:32.000000000 -0500
++++ src/input-pad-1.0.1/input-pad/window-gtk.c	2011-10-03 15:17:03.802622400 -0500
+@@ -4254,7 +4254,11 @@ input_pad_gtk_window_xtest_gdk_setup (In
+ static gboolean
+ check_module_filename (const gchar *filename)
+ {
++#ifdef __CYGWIN__
++    if (!g_str_has_prefix (filename, "cyg") ||
++#else
+     if (!g_str_has_prefix (filename, "lib") ||
++#endif
+         !g_str_has_prefix (filename + 3, MODULE_NAME_PREFIX)) {
+         g_warning ("File prefix is not input-pad library: %s", filename);
+         return FALSE;

@@ -1,0 +1,5 @@
+category: X11
+requires: libinput-pad1
+sdesc: "Input Pad text entry tool"
+ldesc: "Input Pad is a tool to send characters to text applications by 
+clicking various buttons."
