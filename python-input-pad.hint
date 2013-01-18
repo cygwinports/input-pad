@@ -1,6 +1,0 @@
-category: X11 Python
-requires: libglib2.0_0 libgtk2.0_0 libinput-pad1 python python-gtk2.0
-external-source: input-pad
-sdesc: "Input Pad text entry library (Python bindings)"
-ldesc: "Input Pad is a tool to send characters to text applications by 
-clicking various buttons."

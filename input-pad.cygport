@@ -1,0 +1,36 @@
+inherit python gnome2
+
+NAME="input-pad"
+VERSION=1.0.2
+RELEASE=1
+CATEGORY="X11"
+SUMMARY="Input Pad text entry tool"
+DESCRIPTION="Input Pad is a tool to send characters to text applications by
+clicking various buttons."
+HOMEPAGE="http://code.google.com/p/input-pad/"
+SRC_URI="http://input-pad.googlecode.com/files/${P}.tar.gz"
+PATCH_URI="1.0.1-cygwin.patch  1.0.1-ldflags.patch"
+
+PKG_NAMES="${PN} lib${PN}1 lib${PN}-common lib${PN}-devel girepository-InputPad1.0"
+input_pad_CONTENTS="usr/bin/*.exe usr/share/applications/"
+libinput_pad1_SUMMARY="${SUMMARY% *} library (runtime)"
+libinput_pad1_REQUIRES="libinput-pad-common"
+libinput_pad1_CONTENTS="usr/bin/cyginput-pad-1.dll usr/lib/input-pad-1.0/"
+libinput_pad_common_SUMMARY="${SUMMARY% *} library (data)"
+libinput_pad_common_CONTENTS="--exclude=applications --exclude=gir-1.0 usr/share/"
+libinput_pad_devel_SUMMARY="${SUMMARY% *} library (development)"
+libinput_pad_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+girepository_InputPad1_0_SUMMARY="${SUMMARY% *} library (GObject Introspection)"
+girepository_InputPad1_0_CONTENTS="usr/*/gir*/InputPad-1.0.*"
+
+DISTCLEANFILES="pyinput-pad/input_pad*.{c,py}"
+
+CYGCONF_ARGS="--enable-eek --enable-xtest"
+LDFLAGS+=" -Wl,--export-all-symbols"
+MAKEOPTS+=" no_undefined=-no-undefined"
+
+src_install() {
+	cd ${B}
+	cyginstall
+	make_desktop_entry input-pad "Input Pad" input-pad "Accessibility;Utility"
+}

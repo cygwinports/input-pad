@@ -1,6 +1,0 @@
-category: X11
-requires: libinput-pad1 libglib2.0-devel libgtk2.0-devel gettext libpango1.0-devel libX11-devel libxkbfile-devel libxklavier-devel libxml2-devel
-external-source: input-pad
-sdesc: "Input Pad text entry library (development)"
-ldesc: "Input Pad is a tool to send characters to text applications by 
-clicking various buttons."
