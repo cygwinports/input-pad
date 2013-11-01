@@ -3,15 +3,16 @@ inherit python gnome2
 NAME="input-pad"
 VERSION=1.0.2
 RELEASE=1
-CATEGORY="X11"
+CATEGORY="Libs"
 SUMMARY="Input Pad text entry tool"
 DESCRIPTION="Input Pad is a tool to send characters to text applications by
 clicking various buttons."
 HOMEPAGE="http://code.google.com/p/input-pad/"
-SRC_URI="http://input-pad.googlecode.com/files/${P}.tar.gz"
+SRC_URI="http://input-pad.googlecode.com/files/${NAME}-${VERSION}.tar.gz"
 PATCH_URI="1.0.1-cygwin.patch  1.0.1-ldflags.patch"
 
-PKG_NAMES="${PN} lib${PN}1 lib${PN}-common lib${PN}-devel girepository-InputPad1.0"
+PKG_NAMES="${NAME} lib${NAME}1 lib${NAME}-common lib${NAME}-devel girepository-InputPad1.0"
+input_pad_CATEGORY="X11"
 input_pad_CONTENTS="usr/bin/*.exe usr/share/applications/"
 libinput_pad1_SUMMARY="${SUMMARY% *} library (runtime)"
 libinput_pad1_REQUIRES="libinput-pad-common"
