@@ -1,28 +1,34 @@
 inherit python gnome2
 
 NAME="input-pad"
-VERSION=1.0.2
+VERSION=1.0.99.20140916
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Input Pad text entry tool"
 DESCRIPTION="Input Pad is a tool to send characters to text applications by
 clicking various buttons."
-HOMEPAGE="http://code.google.com/p/input-pad/"
-SRC_URI="http://input-pad.googlecode.com/files/${NAME}-${VERSION}.tar.gz"
-PATCH_URI="1.0.1-cygwin.patch  1.0.1-ldflags.patch"
+HOMEPAGE="https://github.com/fujiwarat/input-pad/wiki"
+SRC_URI="https://github.com/fujiwarat/input-pad/archive/${VERSION}/input-pad-${VERSION}.tar.gz"
+PATCH_URI="
+	1.0.1-cygwin.patch
+	1.0.1-ldflags.patch
+	1.0.99-vpath.patch
+"
 
-PKG_NAMES="${NAME} lib${NAME}1 lib${NAME}-common lib${NAME}-devel girepository-InputPad1.0"
+PKG_NAMES="${NAME} lib${NAME}1.0_1 lib${NAME}-common lib${NAME}1.0-devel girepository-InputPad1.1"
 input_pad_CATEGORY="X11"
-input_pad_CONTENTS="usr/bin/*.exe usr/share/applications/"
-libinput_pad1_SUMMARY="${SUMMARY% *} library (runtime)"
-libinput_pad1_REQUIRES="libinput-pad-common"
-libinput_pad1_CONTENTS="usr/bin/cyginput-pad-1.dll usr/lib/input-pad-1.0/"
+input_pad_CONTENTS="usr/bin/*.exe usr/share/applications/ usr/share/man/"
+libinput_pad1_0_1_SUMMARY="${SUMMARY% *} library (runtime)"
+libinput_pad1_0_1_REQUIRES="libinput-pad-common"
+libinput_pad1_0_1_CONTENTS="usr/bin/cyginput-pad-1.0-1.dll usr/lib/input-pad-1.1/"
 libinput_pad_common_SUMMARY="${SUMMARY% *} library (data)"
-libinput_pad_common_CONTENTS="--exclude=applications --exclude=gir-1.0 usr/share/"
-libinput_pad_devel_SUMMARY="${SUMMARY% *} library (development)"
-libinput_pad_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
-girepository_InputPad1_0_SUMMARY="${SUMMARY% *} library (GObject Introspection)"
-girepository_InputPad1_0_CONTENTS="usr/*/gir*/InputPad-1.0.*"
+libinput_pad_common_CONTENTS="--exclude=applications --exclude=gir-1.0 --exclude=man usr/share/"
+libinput_pad1_0_devel_SUMMARY="${SUMMARY% *} library (development)"
+libinput_pad1_0_devel_OBSOLETES="libinput-pad-devel"
+libinput_pad1_0_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+girepository_InputPad1_1_SUMMARY="${SUMMARY% *} library (GObject Introspection)"
+girepository_InputPad1_1_OBSOLETES="girepository-InputPad1.0"
+girepository_InputPad1_1_CONTENTS="usr/*/gir*/InputPad-1.1.*"
 
 DISTCLEANFILES="pyinput-pad/input_pad*.{c,py}"
 

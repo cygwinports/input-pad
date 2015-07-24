@@ -1,0 +1,30 @@
+--- origsrc/input-pad-1.0.99.20140916/input-pad/Makefile.am	2015-07-23 17:47:35.243115700 -0500
++++ src/input-pad-1.0.99.20140916/input-pad/Makefile.am	2015-07-23 17:53:09.984622500 -0500
+@@ -110,7 +110,7 @@ libinput_pad_1_0_la_LDFLAGS = \
+ 	$(NULL)
+ 
+ resources.c: input-pad.gresource.xml
+-	$(GLIB_COMPILE_RESOURCES) $< --target=$@ --generate-source
++	$(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --target=$@ --generate-source $<
+ 
+ input-pad-marshal.h: input-pad-marshal.list
+ 	@$(GLIB_GENMARSHAL) $< --prefix=INPUT_PAD --header > $@ \
+@@ -204,9 +204,6 @@ input_pad_LDADD = \
+ 	$(NULL)
+ 
+ if HAVE_INTROSPECTION
+-introspection_files = \
+-    $(libinput_pad_1_0_la_SOURCES)                                  \
+-    $(NULL)
+ InputPad-$(libinput_pad_VERSION).gir: $(libinput_pad_LTLIBRARIES) Makefile
+ InputPad_1_1_gir_SCANNERFLAGS = \
+     --pkg-export=input-pad                                      \
+@@ -214,7 +211,7 @@ InputPad_1_1_gir_SCANNERFLAGS = \
+     $(INPUT_PAD_GIR_SCANNERFLAGS)
+ InputPad_1_1_gir_INCLUDES = GLib-2.0 GObject-2.0 Gio-2.0 Gtk-3.0
+ InputPad_1_1_gir_LIBS = $(libinput_pad_LTLIBRARIES)
+-InputPad_1_1_gir_FILES = $(addprefix $(srcdir)/,$(introspection_files))
++InputPad_1_1_gir_FILES = $(libinput_pad_1_0_la_SOURCES)
+ InputPad_1_1_gir_CFLAGS = -DIBUS_COMPILATION
+ INTROSPECTION_GIRS += InputPad-$(libinput_pad_VERSION).gir
+ 
